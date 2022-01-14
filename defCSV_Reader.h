@@ -156,11 +156,11 @@ namespace def
 
 	public:
 
-		std::string GetValue(uint64_t col, uint64_t row)
+		std::string GetValue(uint64_t row, uint64_t col)
 		{
 			for (const auto cell : vecCells)
 			{
-				if (col == cell.col && row == cell.row)
+				if (cell.row == row && cell.col == col)
 					return cell.value;
 			}
 		}
@@ -178,12 +178,12 @@ namespace def
 			}
 		}
 
-		uint64_t GetTotalCols()
+		inline uint64_t GetTotalCols()
 		{
 			return vecCells[vecCells.size() - 1].col + 1;
 		}
 
-		uint64_t GetTotalRows()
+		inline uint64_t GetTotalRows()
 		{
 			return vecCells[vecCells.size() - 1].row + 1;
 		}
