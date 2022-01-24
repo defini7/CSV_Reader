@@ -1,7 +1,7 @@
 # CSV_Reader
 Простой считыватель CSV файлов на C++
 
-# LICENSE
+# Лицензия
 
 BSD 3-Clause License
 
