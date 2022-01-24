@@ -1,5 +1,5 @@
 # CSV_Reader
-Simple CSV reader on C++
+Простой считыватель CSV файлов на C++
 
 # LICENSE
 
