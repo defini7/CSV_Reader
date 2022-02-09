@@ -2,7 +2,7 @@
 
 int main()
 {
-	def::CSV_Reader* reader = new def::CSV_Reader("large.csv");
+	def::CSV_Reader* reader = new def::CSV_Reader("csvs/large.csv");
 
 	reader->Print();
 
