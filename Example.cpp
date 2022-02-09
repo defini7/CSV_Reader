@@ -9,6 +9,8 @@ int main()
 	std::cout << "\nTotal Cols: " << reader->GetTotalCols() << "\n" << "Total Rows: " << reader->GetTotalRows() << "\n\n";
 
 	std::cout << reader->GetValue(0, 0) << "\n";
+	
+	delete reader;
 
 	return 0;
 }
