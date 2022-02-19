@@ -8,24 +8,18 @@
 #pragma region LICENSE
 /**
 	BSD 3-Clause License
-
 	Copyright (c) 2022, Alex
 	All rights reserved.
-
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-
 	1. Redistributions of source code must retain the above copyright notice, this
 	   list of conditions and the following disclaimer.
-
 	2. Redistributions in binary form must reproduce the above copyright notice,
 	   this list of conditions and the following disclaimer in the documentation
 	   and/or other materials provided with the distribution.
-
 	3. Neither the name of the copyright holder nor the names of its
 	   contributors may be used to endorse or promote products derived from
 	   this software without specific prior written permission.
-
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -42,17 +36,13 @@
 #pragma region EXAMPLE
 /**
 	#include "defCSV_Reader.h"
-
 	int main()
 	{
 		def::CSV_Reader* reader = new def::CSV_Reader("large.csv");
-
 		reader->Print();
-
 		std::cout << "\nTotal Cols: " << reader->GetTotalCols() << "\n" << "Total Rows: " << reader->GetTotalRows() << "\n\n";
-
 		std::cout << reader->GetValue(0, 0) << "\n";
-
+		delete reader;
 		return 0;
 	}
 **/
@@ -75,8 +65,8 @@ namespace def
 
 		struct sCell
 		{
-			uint64_t row; // unsigned long long
-			uint64_t col; // unsigned long long
+			int row; // unsigned long long
+			int col; // unsigned long long
 
 			std::string value;
 		};
@@ -87,7 +77,7 @@ namespace def
 		{
 			std::string s;
 
-			for (uint64_t c = 0; c < sInput.length(); c++)
+			for (int c = 0; c < sInput.length(); c++)
 			{
 				switch (sInput[c])
 				{
@@ -116,7 +106,7 @@ namespace def
 			if (!ifCsvFile.is_open())
 				return false;
 
-			for (uint64_t i = 0; !ifCsvFile.eof(); i++)
+			for (int i = 0; !ifCsvFile.eof(); i++)
 			{
 				if (ifCsvFile.bad())
 					return false;
@@ -128,7 +118,7 @@ namespace def
 				std::getline(ifCsvFile, s);
 				Split(s, &vecOut);
 
-				for (uint64_t j = 0; j < vecOut.size(); j++)
+				for (int j = 0; j < vecOut.size(); j++)
 				{
 					c.col = j;
 					c.row = i;
@@ -153,7 +143,7 @@ namespace def
 
 	public:
 
-		std::string GetValue(uint64_t row, uint64_t col)
+		std::string GetValue(int row, int col)
 		{
 			for (const auto cell : vecCells)
 			{
@@ -175,12 +165,12 @@ namespace def
 			}
 		}
 
-		inline uint64_t GetTotalCols()
+		inline int GetTotalCols()
 		{
-			return vecCells[vecCells.size() - 1].col + 1;
+			return vecCells[vecCells.size() - 1].col + 2;
 		}
 
-		inline uint64_t GetTotalRows()
+		inline int GetTotalRows()
 		{
 			return vecCells[vecCells.size() - 1].row + 1;
 		}
