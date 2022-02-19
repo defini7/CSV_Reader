@@ -167,7 +167,7 @@ namespace def
 
 		inline int GetTotalCols()
 		{
-			return vecCells[vecCells.size() - 1].col + 2;
+			return vecCells[vecCells.size() - 1].col + 1;
 		}
 
 		inline int GetTotalRows()
