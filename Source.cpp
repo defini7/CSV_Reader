@@ -2,7 +2,7 @@
 #include "CSV_Reader.hpp"
 
 int main() {
-	def::CSV_Reader* pReader = new def::CSV_Reader("");
+	def::CSV_Reader* pReader = nullptr;
 
 	std::cout << "DEFINIT CSV READER v0.1\n";
 
@@ -22,7 +22,6 @@ int main() {
 		}
 
 		if (strcmp(vecInput[0], "load") == 0) {
-			delete pReader;
 			pReader = new def::CSV_Reader(vecInput[1]);
 		}
 		else if (strcmp(vecInput[0], "print") == 0) {
